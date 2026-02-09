@@ -54,10 +54,10 @@ model UserLog {
   user        User      @relation(fields: [userId], references: [id], onDelete: Cascade)
   equipmentId String
   equipment   Equipment @relation(fields: [equipmentId], references: [id], onDelete: Cascade)
-  startTime   DateTime  @default(now())
-  endTime     DateTime  @default(now())
+  startTime   DateTime
+  endTime     DateTime?
   purpose     String
-  notes       String
+  notes       String?
   createdAt   DateTime  @default(now())
   updatedAt   DateTime  @updatedAt
 }
