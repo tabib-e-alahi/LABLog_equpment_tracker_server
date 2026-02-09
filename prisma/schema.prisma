@@ -19,22 +19,32 @@ enum Role {
 }
 
 model User {
-  id        String   @id @default(uuid())
+  id        String    @id @default(uuid())
   name      String
-  email     String   @unique
+  email     String    @unique
   password  String
-  role      Role     @default(Student)
-  isActive  Boolean  @default(true)
-  createdAt DateTime @default(now())
-  updatedAt DateTime @default(now())
+  role      Role      @default(Student)
+  isActive  Boolean   @default(true)
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @default(now())
+  userLogs  UserLog[]
 }
 
-model Equipment{
-  id String @id @default(uuid())
-  name String
-  serialNumber String @unique
-  status String
-  location String
-  metadata Json
-  createdAt
+model Equipment {
+  id           String   @id @default(uuid())
+  name         String
+  serialNumber String   @unique
+  status       String
+  location     String
+  metadata     Json
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @default(now())
+}
+
+model UserLog {
+  id     String @id @default(uuid())
+  userId String
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  equipmentId String
+  equipment
 }
