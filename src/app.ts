@@ -1,5 +1,6 @@
 import express from "express";
 import cors from "cors";
+import routes from "./routes";
 
 const app = express();
 
@@ -10,5 +11,7 @@ app.use(
         origin: "*",
     }),
 );
+
+app.use("/api/v1", routes);
 
 export default app;

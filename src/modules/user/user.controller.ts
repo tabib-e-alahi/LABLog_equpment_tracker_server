@@ -19,3 +19,7 @@ const register: RequestHandler = async (req, res) => {
         });
     }
 };
+
+export const userController = {
+    register,
+};
