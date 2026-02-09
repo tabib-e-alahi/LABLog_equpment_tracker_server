@@ -28,3 +28,13 @@ model User {
   createdAt DateTime @default(now())
   updatedAt DateTime @default(now())
 }
+
+model Equipment{
+  id String @id @default(uuid())
+  name String
+  serialNumber String @unique
+  status String
+  location String
+  metadata Json
+  createdAt
+}
