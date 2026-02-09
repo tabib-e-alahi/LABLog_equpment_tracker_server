@@ -1,5 +1,5 @@
 import { RequestHandler } from "express";
-import { equipmentService } from "./equipment.service";
+// import { equipmentService } from "./equipment.service";
 import { prisma } from "../../lib/prisma";
 
 const createEquipment: RequestHandler = async (req, res) => {
