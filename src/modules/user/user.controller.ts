@@ -1,4 +1,9 @@
 import { RequestHandler } from "express";
+import { userService } from "./user.service";
 
 
-const register: RequestHandler = as
+const register: RequestHandler = async(req, res) =>{
+      const payload = req.body;
+
+      const user = await userService.register(payload: User)
+}
