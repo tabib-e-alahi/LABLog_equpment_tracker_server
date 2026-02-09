@@ -14,5 +14,4 @@ app.use(
 
 app.use("/api/v1", routes);
 
-
 export default app;
