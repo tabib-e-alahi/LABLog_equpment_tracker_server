@@ -1,2 +1,7 @@
+const createEquipment = async () => {
+    console.log("equipment services");
+};
 
-const create
+export const equipmentService = {
+    createEquipment,
+};
