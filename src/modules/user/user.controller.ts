@@ -6,6 +6,16 @@ const register: RequestHandler = async (req, res) => {
         const payload = req.body;
         const user = await userService.register(payload);
 
-        return
-    } catch (error) {}
+        return res.status(201).json({
+            success: true,
+            message: "user registered successfully.",
+            data: user,
+        });
+    } catch (error: any) {
+        return res.status(500).json({
+            success: false,
+            message: "user registration failed!!!.",
+            error,
+        });
+    }
 };
