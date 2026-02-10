@@ -22,14 +22,14 @@ const auth = (...roles: Role[]) => {
             req.user = decode as JwtPayload;
 
             if (roles && !roles.includes(req.user.role))
-                throw new Error("Forbidden!");
+                throw new Error("Forbidden! Only for Authorized User");
 
             next();
         } catch (error: any) {
             return res.status(500).json({
                 success: false,
                 message: "Unauthorized Access!",
-                error: error,
+                error: error.message,
             });
         }
     };
