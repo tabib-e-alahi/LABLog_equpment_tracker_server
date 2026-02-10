@@ -25,11 +25,11 @@ const auth = (...roles: Role[]) => {
                 throw new Error("Forbidden!");
 
             next();
-        } catch (error) {
+        } catch (error: any) {
             return res.status(500).json({
                 success: false,
                 message: "Unauthorized Access!",
-                error,
+                error: error,
             });
         }
     };

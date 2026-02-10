@@ -1,10 +1,11 @@
 import { Router } from "express";
 import { usageLogController } from "./log.controller";
 import auth from "../../middleware/auth";
+import { Role } from "../../generated/prisma/enums";
 
 const usageLogRouter = Router();
 
-usageLogRouter.post("/", auth(), usageLogController.createUsageLog);
+usageLogRouter.post("/", auth(Role.Admin), usageLogController.createUsageLog);
 
 usageLogRouter.get("/", usageLogController.getUsageLog);
 
