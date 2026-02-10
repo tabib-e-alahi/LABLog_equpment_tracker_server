@@ -26,7 +26,14 @@ const getUsageLog: RequestHandler = async (req, res) => {
                         isActive: true,
                     },
                 },
-                equipment: true,
+                equipment: {
+                    select: {
+                        name: true,
+                        serialNumber: true,
+                        location: true,
+                        metadata: true,
+                    },
+                },
             },
         });
         res.status(200).json({ message: "Usage Logs Data", data: log });
