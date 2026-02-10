@@ -1,10 +1,12 @@
 import { Request, Response, NextFunction } from "express";
 import jwt, { JwtPayload } from "jsonwebtoken";
 
-declare global{
-      namespace Express{
-            user: Jwt
-      }
+declare global {
+    namespace Express {
+        interface Request {
+            user: JwtPayload;
+        }
+    }
 }
 
 const auth = (roles?: string[]) => {
@@ -16,8 +18,9 @@ const auth = (roles?: string[]) => {
             const decode = jwt.verify(token, "tabib secret");
             if (!decode) throw new Error("Forbidden!");
 
+            req.user = decode as JwtPayload;
 
-
+            if(roles && !roles.includes(req.user.role)) th
             next();
         } catch (error) {
             console.error(error);
