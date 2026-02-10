@@ -20,10 +20,16 @@ const auth = (roles?: string[]) => {
 
             req.user = decode as JwtPayload;
 
-            if(roles && !roles.includes(req.user.role)) th
+            if (roles && !roles.includes(req.user.role))
+                throw new Error("Forbidden!");
+
             next();
         } catch (error) {
-            console.error(error);
+            return res.status(500).json({
+                success: false,
+                message: "Unauthorized Access!",
+                error,
+            });
         }
     };
 };
