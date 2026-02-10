@@ -23,7 +23,7 @@ const getUsageLog: RequestHandler = async (req, res) => {
     }
 };
 
-export const logController = {
+export const usageLogController = {
     createUsageLog,
     getUsageLog,
 };

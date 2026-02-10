@@ -1,6 +1,10 @@
 import { Router } from "express";
-import { logController } from "./log.controller";
+import { usageLogController } from "./log.controller";
 
 const usageLogRouter = Router();
 
-usageLogRouter.post("/", logController.createUsageLog);
+usageLogRouter.post("/", usageLogController.createUsageLog);
+
+usageLogRouter.get("/", usageLogController.getUsageLog);
+
+export default usageLogRouter;
