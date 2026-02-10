@@ -43,6 +43,7 @@ const getUsageLog: RequestHandler = async (req, res) => {
 };
 
 const updateUsageLog: RequestHandler = async (req, res) => {
+      console.log("Hitted...");
   const { id } = req.params;
   console.log(req.params);
 //   if (!id) return res.send("Please provide id");
