@@ -25,15 +25,15 @@ enum EquipmentStatus {
 }
 
 model User {
-  id        String    @id @default(uuid())
+  id        String     @id @default(uuid())
   name      String
-  email     String    @unique
+  email     String     @unique
   password  String
-  role      Role      @default(Student)
-  isActive  Boolean   @default(true)
-  createdAt DateTime  @default(now())
-  updatedAt DateTime  @updatedAt
-  userLogs  UserLog[]
+  role      Role       @default(Student)
+  isActive  Boolean    @default(true)
+  createdAt DateTime   @default(now())
+  updatedAt DateTime   @updatedAt
+  UsageLogs UsageLog[]
 }
 
 model Equipment {
@@ -45,10 +45,10 @@ model Equipment {
   metadata     Json?
   createdAt    DateTime        @default(now())
   updatedAt    DateTime        @updatedAt
-  userLogs     UserLog[]
+  UsageLogs    UsageLog[]
 }
 
-model UserLog {
+model UsageLog {
   id String @id @default(uuid())
 
   userId      String
