@@ -37,7 +37,7 @@ const login: RequestHandler = async (req, res) => {
 
         const matchPassword = bcrypt.compare(password, user.password);
         if(!matchPassword) throw new Error("Invalid Password!");
-        const token = jwt.sign(password, "secret")
+        const token = jwt.sign(password, "tabib secret", {expiresIn:})
         return res.status(201).json({
             success: true,
             message: "user registered successfully.",
