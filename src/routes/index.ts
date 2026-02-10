@@ -9,6 +9,6 @@ routes.use("/user", userRouter);
 
 routes.use("/equipment", equipmentRouter);
 
-routes.use("/usagelogs", usageLogRouter);
+routes.use("/usagelog", usageLogRouter);
 
 export default routes;
