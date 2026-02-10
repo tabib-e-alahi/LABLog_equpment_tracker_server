@@ -1,5 +1,6 @@
 import { Request, Response, NextFunction } from "express";
 import jwt, { JwtPayload } from "jsonwebtoken";
+import { Role } from "../generated/prisma/enums";
 
 declare global {
     namespace Express {
@@ -9,7 +10,7 @@ declare global {
     }
 }
 
-const auth = (roles?: string[]) => {
+const auth = (...roles: Role[]) => {
     return (req: Request, res: Response, next: NextFunction) => {
         try {
             const token = req.headers.authorization?.split(" ")[1];
