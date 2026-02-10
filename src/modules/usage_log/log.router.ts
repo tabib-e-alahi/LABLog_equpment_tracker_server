@@ -9,4 +9,6 @@ usageLogRouter.post("/", auth(Role.Admin), usageLogController.createUsageLog);
 
 usageLogRouter.get("/", usageLogController.getUsageLog);
 
+usageLogRouter.patch("/:id", auth(), usageLogController.updateUsageLog);
+
 export default usageLogRouter;

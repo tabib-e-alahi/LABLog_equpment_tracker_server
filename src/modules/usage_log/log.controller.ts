@@ -42,7 +42,26 @@ const getUsageLog: RequestHandler = async (req, res) => {
     }
 };
 
+const updateUsageLog: RequestHandler = async (req, res) => {
+  const { id } = req.params;
+//   if (!id) return res.send("Please provide id");
+
+//   try {
+//     const log = await prisma.usageLog.update({
+//       where: { id },
+//       data: {
+//         endTime: new Date(),
+//       },
+//     });
+
+//     res.send({ message: "log", data: log });
+//   } catch (error) {
+//     res.send({ message: "log getting error", error });
+//   }
+};
+
 export const usageLogController = {
     createUsageLog,
     getUsageLog,
+    updateUsageLog
 };
