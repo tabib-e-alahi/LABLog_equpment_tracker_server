@@ -46,20 +46,20 @@ const updateUsageLog: RequestHandler = async (req, res) => {
       console.log("Hitted...");
   const { id } = req.params;
   console.log(req.params);
-//   if (!id) return res.send("Please provide id");
+  if (!id) return res.send("Please provide id");
 
-//   try {
-//     const log = await prisma.usageLog.update({
-//       where: { id },
-//       data: {
-//         endTime: new Date(),
-//       },
-//     });
+  try {
+    const log = await prisma.usageLog.update({
+      where: { id },
+      data: {
+        endTime: new Date(),
+      },
+    });
 
-//     res.send({ message: "log", data: log });
-//   } catch (error) {
-//     res.send({ message: "log getting error", error });
-//   }
+    res.send({ message: "log", data: log });
+  } catch (error) {
+    res.send({ message: "log getting error", error });
+  }
 };
 
 export const usageLogController = {
