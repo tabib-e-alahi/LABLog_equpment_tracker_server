@@ -51,7 +51,7 @@ const login: RequestHandler = async (req, res) => {
     } catch (error: any) {
         return res.status(500).json({
             success: false,
-            message: "user registration failed!!!.",
+            message: "Login Failed",
             error,
         });
     }
