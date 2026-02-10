@@ -2,6 +2,7 @@ import { RequestHandler } from "express";
 import { userService } from "./user.service";
 import { prisma } from "../../lib/prisma";
 import jwt from "jsonwebtoken";
+import bcrypt from "bcrypt";
 
 const register: RequestHandler = async (req, res) => {
     try {
@@ -34,7 +35,9 @@ const login: RequestHandler = async (req, res) => {
 
         if (!user) throw new Error("User not found!");
 
-        const matchPassword = ;
+        const matchPassword = bcrypt.compare(password, user.password);
+        if(!matchPassword) throw new Error("Invalid Password!");
+        
         return res.status(201).json({
             success: true,
             message: "user registered successfully.",
