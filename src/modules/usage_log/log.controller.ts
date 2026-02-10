@@ -16,10 +16,8 @@ const createUsageLog: RequestHandler = async (req, res) => {
 
 const getUsageLog: RequestHandler = async (req, res) => {
     try {
-        const log = await prisma.usageLog.findMany({
-            data: payload,
-        });
-        res.status(200).json({ message: "usage added", data: log });
+        const log = await prisma.usageLog.findMany();
+        res.status(200).json({ message: "Usage Logs Data", data: log });
     } catch (error) {
         console.error(error);
     }
@@ -27,4 +25,5 @@ const getUsageLog: RequestHandler = async (req, res) => {
 
 export const logController = {
     createUsageLog,
+    getUsageLog,
 };
