@@ -1,6 +1,7 @@
 import { RequestHandler } from "express";
 import { userService } from "./user.service";
 import { prisma } from "../../lib/prisma";
+import jwt from "jsonwebtoken";
 
 const register: RequestHandler = async (req, res) => {
     try {
@@ -23,9 +24,17 @@ const register: RequestHandler = async (req, res) => {
 
 const login: RequestHandler = async (req, res) => {
     try {
-        const {email, password} = req.body;
+        const { email, password } = req.body;
 
-        const user = await prisma.user.fin
+        const user = await prisma.user.findUnique({
+            where: {
+                email,
+            },
+        });
+
+        if (!user) throw new Error("User not found!");
+
+        const matchPassword = ;
         return res.status(201).json({
             success: true,
             message: "user registered successfully.",
