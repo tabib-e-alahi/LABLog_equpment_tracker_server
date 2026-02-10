@@ -36,12 +36,17 @@ const login: RequestHandler = async (req, res) => {
         if (!user) throw new Error("User not found!");
 
         const matchPassword = bcrypt.compare(password, user.password);
-        if(!matchPassword) throw new Error("Invalid Password!");
-        const token = jwt.sign(password, "tabib secret", {expiresIn:})
+        if (!matchPassword) throw new Error("Invalid Password!");
+        const token = await jwt.sign(
+            { id: user.id, role: user.role },
+            "tabib secret",
+            { expiresIn: "7d" },
+        );
+
         return res.status(201).json({
             success: true,
-            message: "user registered successfully.",
-            data: user,
+            message: "Login successfull",
+            token,
         });
     } catch (error: any) {
         return res.status(500).json({
