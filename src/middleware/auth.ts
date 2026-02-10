@@ -1,8 +1,7 @@
+import { Request, Response, NextFunction } from "express"
 
 const auth = (roles?: string[])=>{
-      try {
-            
-      } catch (error) {
-            console.error(error);
+      return (req: Request, res: Response, next: NextFunction) =>{
+            const token = 
       }
 }
