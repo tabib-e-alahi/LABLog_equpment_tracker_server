@@ -8,10 +8,9 @@ const auth = (roles?: string[]) => {
             if (!token) throw new Error("Unauthorized Access!");
 
             const decode = jwt.verify(token, "secret");
-            if(!decode) throw new Error("Forbidden!");
+            if (!decode) throw new Error("Forbidden!");
 
-            req.user = decode as JwtPayload;
-            
+            next();
         } catch (error) {
             console.error(error);
         }
