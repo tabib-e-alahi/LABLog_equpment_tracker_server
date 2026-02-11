@@ -7,7 +7,8 @@ import { auth } from "./lib/auth";
 const app = express();
 app.use(
     cors({
-        origin: "*",
+        origin: process.env.FRONTEND_URL,
+        
     }),
 );
 app.all("/api/auth/*splat", toNodeHandler(auth));
