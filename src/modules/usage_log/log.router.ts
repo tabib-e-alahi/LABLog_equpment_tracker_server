@@ -8,6 +8,7 @@ const usageLogRouter = Router();
 //create usage data route
 usageLogRouter.post("/", auth("Admin"), usageLogController.createUsageLog);
 
+// get all usage logs data route
 usageLogRouter.get("/", usageLogController.getUsageLog);
 
 usageLogRouter.patch("/:id", auth("Admin", "Student"), usageLogController.updateUsageLog);
