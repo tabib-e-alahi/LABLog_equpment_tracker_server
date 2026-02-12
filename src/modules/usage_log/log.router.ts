@@ -5,6 +5,7 @@ import auth from "../../middleware/auth";
 
 const usageLogRouter = Router();
 
+//create usage data route
 usageLogRouter.post("/", auth("Admin"), usageLogController.createUsageLog);
 
 usageLogRouter.get("/", usageLogController.getUsageLog);
